@@ -1,152 +1,636 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="NovaSetup — setups gaming RGB, néons LED et accessoires pour créer ton espace gaming.">
-  <title>NovaSetup.ma — Gaming Setup & RGB</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NovaSetup.ma — Gaming & RGB</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #050509;
+      color: white;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 9, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #252536;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow:
+        0 0 8px #8b5cff,
+        0 0 20px #8b5cff;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: #ddd;
+      font-weight: bold;
+    }
+
+    .menu a:hover {
+      color: #9d6cff;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 20px;
+      background:
+        radial-gradient(circle at 20% 30%, #7c3cff33, transparent 35%),
+        radial-gradient(circle at 80% 70%, #00e5ff22, transparent 35%),
+        #050509;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #8b5cff;
+      border-radius: 30px;
+      color: #d8c8ff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px #8b5cff55;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 82px);
+      line-height: 1;
+      margin-bottom: 25px;
+      background: linear-gradient(90deg, #fff, #a66cff, #00e5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: #bbb;
+      font-size: 19px;
+      max-width: 700px;
+      margin: auto auto 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: bold;
+      border: 1px solid #8b5cff;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3cff, #00bfff);
+      box-shadow: 0 0 25px #7c3cff66;
+    }
+
+    .btn-secondary {
+      background: #11111a;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px #8b5cff99;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title span {
+      color: #9d6cff;
+      font-weight: bold;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      margin: 8px 0;
+    }
+
+    .section-title p {
+      color: #999;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #101018, #08080d);
+      border: 1px solid #29293a;
+      border-radius: 18px;
+      padding: 28px;
+      transition: .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: #8b5cff;
+      filter: blur(70px);
+      opacity: .15;
+      right: -30px;
+      top: -30px;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: #8b5cff;
+      box-shadow: 0 10px 35px #8b5cff22;
+    }
+
+    .icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #aaa;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #b993ff;
+      margin-bottom: 15px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .feature {
+      background: #0d0d15;
+      border: 1px solid #242434;
+      padding: 22px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .feature strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .feature span {
+      color: #999;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .review {
+      padding: 25px;
+      background: #0d0d15;
+      border: 1px solid #29293a;
+      border-radius: 15px;
+    }
+
+    .stars {
+      color: #ffd43b;
+      margin-bottom: 10px;
+    }
+
+    .review p {
+      color: #ccc;
+      font-style: italic;
+    }
+
+    .order {
+      background:
+        radial-gradient(circle at top right, #7c3cff22, transparent 40%),
+        #0b0b12;
+      border: 1px solid #29293a;
+      border-radius: 22px;
+      padding: 40px 25px;
+    }
+
+    form {
+      max-width: 650px;
+      margin: auto;
+      display: grid;
+      gap: 15px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #333345;
+      background: #050509;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #8b5cff;
+      box-shadow: 0 0 12px #8b5cff33;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(135deg, #7c3cff, #00bfff);
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      border-top: 1px solid #222230;
+      color: #888;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        flex-direction: column;
+      }
+
+      .menu {
+        justify-content: center;
+      }
+
+      .hero {
+        min-height: 75vh;
+      }
+
+      section {
+        padding: 60px 15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="nav">
-    <a class="logo" href="#accueil"><span>✦</span> NovaSetup</a>
-    <nav>
+
+<header>
+  <nav>
+    <a href="#" class="logo">✦ NovaSetup</a>
+
+    <div class="menu">
       <a href="#produits">Produits</a>
       <a href="#setup">Setup</a>
       <a href="#avis">Avis</a>
       <a href="#contact">Contact</a>
-    </nav>
-    <a class="nav-cta" href="#contact">Commander</a>
-  </header>
+      <a href="#contact">Commander</a>
+    </div>
+  </nav>
+</header>
 
-  <main>
-    <section id="accueil" class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">NOVA SETUP • GAMING & RGB</p>
-        <h1>Transforme ton espace.<br><span>Crée ton setup.</span></h1>
-        <p class="lead">RGB LED strips, néons gaming et accessoires sélectionnés pour donner à ton bureau une vraie identité.</p>
-        <div class="actions">
-          <a class="btn primary" href="#produits">Découvrir les produits</a>
-          <a class="btn ghost" href="#contact">Commander maintenant →</a>
-        </div>
-        <div class="trust">
-          <div><b>RGB</b><small>Ambiance immersive</small></div>
-          <div><b>PRO</b><small>Look premium</small></div>
-          <div><b>24/7</b><small>Support commande</small></div>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="orb"></div>
-        <div class="setup-preview">
-          <div class="monitor"></div>
-          <div class="desk"></div>
-          <div class="tower"></div>
-          <div class="neon">NOVA</div>
-        </div>
-        <span class="float-tag tag1">RGB LED</span>
-        <span class="float-tag tag2">NEON</span>
-      </div>
-    </section>
+<main>
 
-    <section id="produits" class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">COLLECTION</p>
-          <h2>Les essentiels NovaSetup</h2>
-        </div>
-        <p>Des produits pensés pour upgrader ton setup sans le surcharger.</p>
-      </div>
-      <div class="products">
-        <article class="product">
-          <div class="product-art led"><span>RGB</span></div>
-          <div class="product-body">
-            <span class="pill">BEST-SELLER</span>
-            <h3>RGB LED Strip</h3>
-            <p>Éclairage d'ambiance pour bureau, mur ou meuble TV.</p>
-            <div class="product-foot"><strong>À partir de 149 DH</strong><button data-product="RGB LED Strip">Commander</button></div>
-          </div>
-        </article>
-        <article class="product">
-          <div class="product-art neon"><span>NOVA</span></div>
-          <div class="product-body">
-            <span class="pill">SIGNATURE</span>
-            <h3>Néon Gaming</h3>
-            <p>Une pièce forte pour donner du caractère à ton espace.</p>
-            <div class="product-foot"><strong>À partir de 299 DH</strong><button data-product="Néon Gaming">Commander</button></div>
-          </div>
-        </article>
-        <article class="product">
-          <div class="product-art bundle"><span>SETUP</span></div>
-          <div class="product-body">
-            <span class="pill">BUNDLE</span>
-            <h3>Setup Pack</h3>
-            <p>Le combo idéal pour démarrer une ambiance gaming complète.</p>
-            <div class="product-foot"><strong>Sur demande</strong><button data-product="Setup Pack">Commander</button></div>
-          </div>
-        </article>
-      </div>
-    </section>
+  <section class="hero">
+    <div class="hero-content">
 
-    <section id="setup" class="feature">
-      <div class="feature-visual">
-        <div class="wall-glow"></div>
-        <div class="desk-scene">
-          <div class="screen"><span>NOVA<br>SETUP</span></div>
-          <div class="keyboard"></div><div class="mouse"></div><div class="pc"></div>
-        </div>
-      </div>
-      <div class="feature-copy">
-        <p class="eyebrow">TON STYLE, TON SETUP</p>
-        <h2>RGB. Néon. <span>Impact.</span></h2>
-        <p>Choisis ton ambiance et transforme ton bureau en véritable espace gaming. NovaSetup t'aide à construire un setup propre, moderne et personnalisé.</p>
-        <ul>
-          <li>✓ Installation simple</li>
-          <li>✓ Ambiance RGB personnalisable</li>
-          <li>✓ Packs adaptés à différents budgets</li>
-          <li>✓ Commande rapide au Maroc</li>
-        </ul>
-        <a class="btn primary" href="#contact">Créer mon setup</a>
-      </div>
-    </section>
+      <div class="badge">🎮 NOVA SETUP • GAMING & RGB</div>
 
-    <section id="avis" class="section reviews">
-      <div class="section-head">
-        <div><p class="eyebrow">COMMUNAUTÉ</p><h2>Ils parlent de NovaSetup</h2></div>
-      </div>
-      <div class="review-grid">
-        <blockquote>“Le néon change complètement l'ambiance de mon bureau. 🔥”<cite>— Client NovaSetup</cite></blockquote>
-        <blockquote>“Simple à installer et le rendu RGB est vraiment propre.”<cite>— Client NovaSetup</cite></blockquote>
-        <blockquote>“J'ai enfin un setup qui ressemble à ce que je voulais.”<cite>— Client NovaSetup</cite></blockquote>
-      </div>
-    </section>
+      <h1>
+        Transforme ton espace.<br>
+        Crée ton setup.
+      </h1>
 
-    <section id="contact" class="contact">
-      <div>
-        <p class="eyebrow">COMMANDES</p>
+      <p>
+        RGB LED strips, néons gaming et accessoires sélectionnés
+        pour donner à ton bureau une vraie identité.
+      </p>
+
+      <div class="buttons">
+        <a href="#produits" class="btn btn-primary">
+          Découvrir les produits
+        </a>
+
+        <a href="#contact" class="btn btn-secondary">
+          Commander maintenant
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="produits">
+
+    <div class="section-title">
+      <span>COLLECTION</span>
+      <h2>Les essentiels NovaSetup</h2>
+      <p>Des produits pour upgrader ton setup sans le surcharger.</p>
+    </div>
+
+    <div class="products">
+
+      <article class="card">
+        <div class="icon">🌈</div>
+        <h3>RGB LED Strip</h3>
+        <p>
+          Éclairage RGB pour bureau, mur ou meuble TV.
+        </p>
+        <div class="price">À partir de 149 DH</div>
+        <a href="#contact" class="btn btn-primary">Commander</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">⚡</div>
+        <h3>Néon Gaming</h3>
+        <p>
+          Une pièce forte pour donner du caractère à ton espace.
+        </p>
+        <div class="price">À partir de 299 DH</div>
+        <a href="#contact" class="btn btn-primary">Commander</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">🎮</div>
+        <h3>Setup Pack</h3>
+        <p>
+          Le combo idéal pour créer une ambiance gaming complète.
+        </p>
+        <div class="price">Sur demande</div>
+        <a href="#contact" class="btn btn-primary">Commander</a>
+      </article>
+
+    </div>
+
+  </section>
+
+  <section id="setup">
+
+    <div class="section-title">
+      <span>NOVA EXPERIENCE</span>
+      <h2>Ton setup, ton style</h2>
+      <p>Simple, moderne et personnalisable.</p>
+    </div>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="icon">✨</div>
+        <strong>Installation simple</strong>
+        <span>Installe facilement ton éclairage.</span>
+      </div>
+
+      <div class="feature">
+        <div class="icon">🌈</div>
+        <strong>Ambiance RGB</strong>
+        <span>Personnalise les couleurs de ton setup.</span>
+      </div>
+
+      <div class="feature">
+        <div class="icon">💰</div>
+        <strong>Différents budgets</strong>
+        <span>Des solutions adaptées à ton budget.</span>
+      </div>
+
+      <div class="feature">
+        <div class="icon">🇲🇦</div>
+        <strong>Commande au Maroc</strong>
+        <span>Commande rapidement et facilement.</span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="avis">
+
+    <div class="section-title">
+      <span>COMMUNAUTÉ</span>
+      <h2>Ils parlent de NovaSetup</h2>
+    </div>
+
+    <div class="reviews">
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          « Le néon change complètement l'ambiance de mon bureau. 🔥 »
+        </p>
+        <br>
+        <strong>— Client NovaSetup</strong>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          « Simple à installer et le rendu RGB est vraiment propre. »
+        </p>
+        <br>
+        <strong>— Client NovaSetup</strong>
+      </div>
+
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          « J'ai enfin un setup qui ressemble à ce que je voulais. »
+        </p>
+        <br>
+        <strong>— Client NovaSetup</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="contact">
+
+    <div class="order">
+
+      <div class="section-title">
+        <span>COMMANDES</span>
         <h2>Prêt à upgrader ton setup ?</h2>
-        <p>Envoie-nous ton produit préféré et ton nom. Nous te répondrons pour confirmer la commande.</p>
+        <p>
+          Remplis le formulaire et nous te répondrons pour confirmer ta commande.
+        </p>
       </div>
-      <form id="orderForm">
-        <input id="name" type="text" placeholder="Ton nom" required>
-        <select id="product" required>
-          <option value="">Choisir un produit</option>
-          <option>RGB LED Strip</option>
-          <option>Néon Gaming</option>
-          <option>Setup Pack</option>
-          <option>Autre</option>
-        </select>
-        <textarea id="message" rows="4" placeholder="Ton message (optionnel)"></textarea>
-        <button class="btn primary" type="submit">Envoyer la demande</button>
-        <small>Le bouton peut être relié à WhatsApp, Instagram ou un formulaire de commande.</small>
-      </form>
-    </section>
-  </main>
 
-  <footer>
-    <div class="logo"><span>✦</span> NovaSetup</div>
-    <p>© 2026 NovaSetup.ma — Gaming setup & RGB.</p>
-    <div><a href="#contact">Contact</a><a href="#produits">Produits</a></div>
-  </footer>
-  <script src="script.js"></script>
+      <form onsubmit="commander(event)">
+
+        <input
+          id="nom"
+          type="text"
+          placeholder="Ton nom"
+          required
+        >
+
+        <select id="produit" required>
+
+          <option value="">
+            Choisir un produit
+          </option>
+
+          <option value="RGB LED Strip">
+            RGB LED Strip — 149 DH
+          </option>
+
+          <option value="Néon Gaming">
+            Néon Gaming — 299 DH
+          </option>
+
+          <option value="Setup Pack">
+            Setup Pack — Sur demande
+          </option>
+
+          <option value="Autre">
+            Autre
+          </option>
+
+        </select>
+
+        <textarea
+          id="message"
+          placeholder="Ton message (optionnel)"
+        ></textarea>
+
+        <button type="submit">
+          📲 Envoyer la demande
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+
+  <div class="logo">✦ NovaSetup</div>
+
+  <p>
+    © 2026 NovaSetup.ma — Gaming Setup & RGB
+  </p>
+
+</footer>
+
+<script>
+
+function commander(event) {
+
+  event.preventDefault();
+
+  const nom = document.getElementById("nom").value;
+  const produit = document.getElementById("produit").value;
+  const message = document.getElementById("message").value;
+
+  /*
+    IMPORTANT :
+    Remplace 212XXXXXXXXX par ton numéro WhatsApp.
+    Exemple Maroc :
+    2126XXXXXXXX
+    ou
+    2127XXXXXXXX
+  */
+
+  const numeroWhatsApp = "212XXXXXXXXX";
+
+  const texte =
+    "Bonjour NovaSetup 👋%0A%0A" +
+    "Nom : " + encodeURIComponent(nom) + "%0A" +
+    "Produit : " + encodeURIComponent(produit) + "%0A" +
+    "Message : " + encodeURIComponent(message);
+
+  window.open(
+    "https://wa.me/" + numeroWhatsApp + "?text=" + texte,
+    "_blank"
+  );
+}
+
+</script>
+
 </body>
-</html>
+      </html>
+      
