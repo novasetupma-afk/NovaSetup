@@ -559,8 +559,8 @@
             Néon Gaming — 299 DH
           </option>
 
-          <option value="Le combo idéal pour les gamers – 399 DH">
-    Le combo idéal pour les gamers 🎮✨ – 399 DH
+          <option value="Setup Pack — 399 DH">
+            Le combo idéal pour les gamers 🎮✨ – 399 DH
           </option>
 
           <option value="Autre">
@@ -597,42 +597,28 @@
 </footer>
 
 <script>
-
 function commander(event) {
-
   event.preventDefault();
 
   const nom = document.getElementById("nom").value;
   const produit = document.getElementById("produit").value;
   const message = document.getElementById("message").value;
 
-  /*
-    IMPORTANT :
-    Remplace 212654669119
-    par ton numéro WhatsApp.
-    Exemple Maroc :
-    21289485258
-    ou
-    212654669119
-
-
-
-  const numéroWhatsApp = "212654669119";
+  // Remplace ce numéro par ton numéro WhatsApp au format international (sans le '+')
+  const numeroWhatsApp = "212654669119";
 
   const texte =
     "Bonjour NovaSetup 👋%0A%0A" +
-    "Nom : " + encodeURIComponent(nom) + "%0A" +
-    "Produit : " + encodeURIComponent(produit) + "%0A" +
-    "Message : " + encodeURIComponent(message);
+    "*Nom :* " + encodeURIComponent(nom) + "%0A" +
+    "*Produit :* " + encodeURIComponent(produit) + "%0A" +
+    "*Message :* " + encodeURIComponent(message);
 
   window.open(
     "https://wa.me/" + numeroWhatsApp + "?text=" + texte,
     "_blank"
   );
 }
-
 </script>
 
 </body>
-      </html>
-      
+</html>
