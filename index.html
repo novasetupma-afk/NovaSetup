@@ -226,6 +226,53 @@
       margin-bottom: 15px;
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #29293a;
+      background: #0d0d15;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      border-color: #8b5cff;
+      box-shadow: 0 8px 25px rgba(139, 92, 255, 0.25);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 15px;
+      background: rgba(13, 13, 21, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .gallery-caption strong {
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .gallery-caption span {
+      color: #00e5ff;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -364,9 +411,9 @@
 
     <div class="menu">
       <a href="#produits">Produits</a>
+      <a href="#galerie">Galerie</a>
       <a href="#setup">Setup</a>
       <a href="#avis">Avis</a>
-      <a href="#contact">Contact</a>
       <a href="#contact">Commander</a>
     </div>
   </nav>
@@ -441,6 +488,44 @@
         <div class="price">399 DH</div>
         <a href="#contact" class="btn btn-primary">Commander</a>
       </article>
+
+    </div>
+
+  </section>
+
+  <section id="galerie">
+
+    <div class="section-title">
+      <span>GALERIE REAL LIFE</span>
+      <h2>Setups de nos clients</h2>
+      <p>Découvre le rendu réel de nos néons et bandes LED chez notre communauté.</p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <div class="gallery-item">
+        <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQmzncaRqdes_T5N1OMYeQQI4Pp96aQp8h_BV-o2DZ_AqO_5dx4hnyf9uLl2m9cIPlacpX0JbWE4YLZ7NM" alt="Setup Neon Gaming Custom">
+        <div class="gallery-caption">
+          <strong>Néon Custom Blue</strong>
+          <span>@Amine_Gamer</span>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQZIgztnspg3RGCIQMkvXpgL0zkr6W1KrWnO_Cs-tyPiWXya20pCPqiYrC2JX8DAL9qHQ69YbZeAd_bNXk" alt="Setup RGB LED Desk">
+        <div class="gallery-caption">
+          <strong>Setup Pack + Ambient RGB</strong>
+          <span>@Youssef_PC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTcFPo6w7jjhe5oy8eOZQ7tKVCHsghD6XIES-xanT6N9h1kEwxvFLKakMwa5QDi69GV7n9jyDJnaV5blS8" alt="Setup Gaming Dark Room RGB">
+        <div class="gallery-caption">
+          <strong>RGB LED Strip Desk</strong>
+          <span>@Mehdi_Setup</span>
+        </div>
+      </div>
 
     </div>
 
@@ -604,7 +689,6 @@ function commander(event) {
   const produit = document.getElementById("produit").value;
   const message = document.getElementById("message").value;
 
-  // Remplace ce numéro par ton numéro WhatsApp au format international (sans le '+')
   const numeroWhatsApp = "212654669119";
 
   const texte =
